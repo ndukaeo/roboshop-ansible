@@ -14,10 +14,10 @@
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
 
-#- name: Setup App Prerequisites
-#  ansible.builtin.include_role:
-#    name: common
-#    tasks_from: app-prereq
+- name: Setup App Prerequisites
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: app-prereq
 
 - name: Start Nginx Service
   ansible.builtin.systemd_service:
