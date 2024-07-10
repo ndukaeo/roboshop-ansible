@@ -1,0 +1,53 @@
+- name: Disable default nginx module
+  ansible.builtin.shell: dnf module disable nginx -y
+
+- name: Enable Nginx 24 Version
+  ansible.builtin.shell: dnf module enable nginx:1.24 -y
+
+- name: Install Nginx
+  ansible.builtin.dnf:
+    name: nginx
+    state: latest
+
+- name: Copy nginx config file
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Setup App Prerequisites
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: app-prereq
+
+- name: Start Nginx Service
+  ansible.builtin.systemd_service:
+    state: restarted
+    name: nginx
+    enabled: true
+
+#    source common.sh
+#    component=frontend
+#    app_path=/usr/share/nginx/html
+#
+#    PRINT Disable nginx default version
+#    dnf module disable nginx -y &>>$LOG_FILE
+#    STAT $?
+#
+#    PRINT enable nginx version 24
+#    dnf module enable nginx:1.24 -y &>>$LOG_FILE
+#    STAT $?
+#
+#    PRINT install nginx
+#    dnf install nginx -y &>>$LOG_FILE
+#    STAT $?
+#
+#    PRINT copy nginx config file
+#    cp nginx.conf /etc/nginx/nginx.conf &>>$LOG_FILE
+#    STAT $?
+#
+#    APP_PREREQ
+#
+#    PRINT restart nginx service
+#    systemctl enable nginx &>>$LOG_FILE
+#    systemctl restart nginx &>>$LOG_FILE
+#    STAT $?
