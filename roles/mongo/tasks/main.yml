@@ -6,11 +6,11 @@
 
 - name: install mongodb
   ansible.builtin.dnf:
-    name: mongodb-org -y
+    name: mongodb-org
     state: latest
 
 
-- name: Update listen address from 127.0.0.1 to 0.0.0.0 in /etc/mongod.conf
+- name: Update listener address
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
