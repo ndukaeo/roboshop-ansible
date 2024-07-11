@@ -1,7 +1,8 @@
-component: catalogue
+component: shipping
 app_path: /app
-schema_setup: mongo
+schema_setup: mysql
 schema_files:
   - schema
   - master-data
   - app-user
+
