@@ -3,8 +3,8 @@ Description = Catalogue Service
 
 [Service]
 User=roboshop
-Environment=MONGO=true
-Environment=MONGO_URL="mongodb://mongo.{{ env }}.banecio-devops.online:27017/catalogue"
+Environment=MONGO={{ secrets.MONGO }}
+Environment=MONGO_URL="{{ secrets.MONGO_URL }}"
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=catalogue
 

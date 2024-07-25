@@ -2,9 +2,9 @@
 Description = User Service
 [Service]
 User=roboshop
-Environment=MONGO=true
-Environment=REDIS_URL='redis://redis.{{ env }}.banecio-devops.online:6379'
-Environment=MONGO_URL="mongodb://mongo.{{ env }}.banecio-devops.online:27017/users"
+Environment=MONGO={{ secrets.MONGO }}
+Environment=REDIS_URL={{ secrets.REDIS_URL }}
+Environment=MONGO_URL={{ secrets.MONGO_URL }}
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=user
 

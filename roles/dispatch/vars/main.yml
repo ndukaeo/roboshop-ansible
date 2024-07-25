@@ -1,4 +1,4 @@
 component: dispatch
 app_path: /app
-
+secrets: "{{ lookup('hashi_vault', 'secret=roboshop-{{env}}/data/dispatch token={{vault_token}} url=https://vault-internal.banecio-devops.online:8200 validate_certs=False')}}"
 

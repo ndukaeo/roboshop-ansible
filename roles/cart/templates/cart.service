@@ -2,9 +2,9 @@
 Description = Cart Service
 [Service]
 User=roboshop
-Environment=REDIS_HOST=redis.{{ env }}.banecio-devops.online
-Environment=CATALOGUE_HOST=catalogue.{{ env }}.banecio-devops.online
-Environment=CATALOGUE_PORT=8080
+Environment=REDIS_HOST={{ secrets.REDIS_HOST }}
+Environment=CATALOGUE_HOST={{ secrets.CATALOGUE_HOST }}
+Environment=CATALOGUE_PORT={{ secrets.CATALOGUE_PORT }}
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=cart
 

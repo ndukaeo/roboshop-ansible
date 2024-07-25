@@ -3,4 +3,4 @@ app_path: /app
 schema_setup: mongo
 schema_files:
   - master-data
-
+secrets: "{{ lookup('hashi_vault', 'secret=roboshop-{{env}}/data/catalogue token={{vault_token}} url=https://vault-internal.banecio-devops.online:8200 validate_certs=False')}}"
