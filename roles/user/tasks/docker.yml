@@ -7,5 +7,5 @@
       - "8080:8080"
     env:
       MONGO: "{{ secrets.MONGO }}"
-      REDIS_URL: "{ secrets.REDIS_URL }}"
+      REDIS_URL: "{{ secrets.REDIS_URL }}"
       MONGO_URL: "{{ secrets.MONGO_URL }}"
